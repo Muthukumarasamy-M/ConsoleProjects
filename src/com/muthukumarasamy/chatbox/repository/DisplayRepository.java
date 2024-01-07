@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class DisplayRepository {
 
-	private static final String DISPLAY_FILE = "C:\\Users\\ramki\\eclipse-workspace\\Chat\\display.json";
+	private static final String DISPLAY_FILE = "C:\\Users\\ramki\\git\\repository\\projects\\src\\com\\muthukumarasamy\\chatbox\\files\\display.json";
 	private static DisplayRepository display = null;
 	private JSONArray jsonArray;
 

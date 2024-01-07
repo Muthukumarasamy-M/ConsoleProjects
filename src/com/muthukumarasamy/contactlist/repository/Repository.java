@@ -1,81 +1,122 @@
+
 package com.muthukumarasamy.contactlist.repository;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.muthukumarasamy.contactlist.dto.Contact;
 
 public class Repository {
-	private static Repository repository = null;
-	private static List<Contact> contacts;
-
-	public static final String CONTACTSJSON = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\contactlist\\CONTACTS.json";
+	private static Repository repository;
+	private Connection connection;
 
 	private Repository() {
-		contacts = new ArrayList<>();
-		loadContactsFromJson();
+		try {
+			connection = DBconnection.getConnection();
+			createTableIfNotExists();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void createTableIfNotExists() {
+
+		try {
+			String CreatetableSQL = "CREATE TABLE IF NOT EXISTS contacts( name varchar(30) primary key , phonenumber varchar(20) , email varchar(30));";
+			Statement statement = connection.createStatement();
+			statement.execute(CreatetableSQL);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	public static Repository getInstance() {
 		if (repository == null)
 			repository = new Repository();
-
 		return repository;
-
 	}
 
-	public void addContacts(Contact details) {
+	public int addContacts(Contact details) {
 
-		contacts.add(details);
-		Collections.sort(contacts, Comparator.comparing(Contact::getName, String.CASE_INSENSITIVE_ORDER));
+		try {
+			String query = "INSERT into contacts VALUES(?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(query);
 
-		loadContactsToJson(contacts);
-	}
+			statement.setString(1, details.getName());
+			statement.setString(2, details.getPhoneNumber());
+			statement.setString(3, details.getEmail());
+			int Rows = statement.executeUpdate();
+			return Rows;
 
-	public List<Contact> getList() {
-		return contacts;
-	}
-
-	public void loadContactsToJson(List<Contact> contacts) {
-		JSONArray jsonContacts = new JSONArray();
-		for (Contact contact1 : contacts) {
-			jsonContacts.put(contact1.toJson());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		try (FileWriter fileWriter = new FileWriter(CONTACTSJSON)) {
-			fileWriter.write(jsonContacts.toString(2)); // 2 is for indentation
-			System.out.println("Contacts updated");
-		} catch (IOException e) {
+		return 0;
+	}
+	
+	public ArrayList<Contact> DisplayContacts() {
+
+		ArrayList<Contact> contacts = new ArrayList<>();
+		try {
+			String query = "SELECT * FROM contacts";
+			Statement statement = connection.createStatement();
+			ResultSet resultset = statement.executeQuery(query);
+			while (resultset.next()) {
+
+				String name = resultset.getString(1);
+				String phone = resultset.getString(2);
+				String email = resultset.getString(3);
+				contacts.add(new Contact(name, phone, email));
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		return contacts;
+
 	}
 
-	public void loadContactsFromJson() {
+	public ArrayList<Contact> SearchContacts(String keyword) {
+		ArrayList<Contact> contacts = new ArrayList<>();
 		try {
-
-			String json = new String(Files.readAllBytes(Paths.get(CONTACTSJSON)));
-			JSONArray jsonContacts = new JSONArray(json);
-
-			contacts.clear();
-			for (int i = 0; i < jsonContacts.length(); i++) {
-				JSONObject jsonContact = jsonContacts.getJSONObject(i);
-				Contact contact = Contact.fromJson(jsonContact);
-				contacts.add(contact);
+			String query = "SELECT * FROM contacts WHERE name LIKE ?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, "%" + keyword + "%");
+			ResultSet resultset = statement.executeQuery();
+			while (resultset.next()) {
+				String name = resultset.getString(1);
+				String phone = resultset.getString(2);
+				String email = resultset.getString(3);
+				contacts.add(new Contact(name, phone, email));
 			}
-			Collections.sort(contacts, Comparator.comparing(Contact::getName, String.CASE_INSENSITIVE_ORDER));
-		} catch (IOException e) {
-			System.out.println("No existing contacts.json file found.");
+		} catch (SQLException e) {
+
+			e.printStackTrace();
 		}
+		return contacts;
+	}
+
+	public int DeleteContact(String keyword) {
+		try {
+			String query = " DELETE FROM contacts WRERE name = ?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, keyword);
+			
+			int rows =statement.executeUpdate();
+			return rows;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return 0;
+
 	}
 
 }

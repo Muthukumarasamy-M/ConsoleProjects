@@ -18,7 +18,7 @@ public class DisplayView {
 	}
 
 	public void displayUser() {
-
+		
 		System.out.println(displayviewmodel.displayUser());
 	}
 
@@ -45,7 +45,7 @@ public class DisplayView {
 		String user1 = mc.nextLine();
 		System.out.print("Enter the user 2: ");
 		String user2 = mc.nextLine();
-		System.out.println(displayviewmodel.commonBoss(user1,user2));
+		System.out.println("Common Boss :" +displayviewmodel.commonBoss(user1,user2));
 		
 
 	}

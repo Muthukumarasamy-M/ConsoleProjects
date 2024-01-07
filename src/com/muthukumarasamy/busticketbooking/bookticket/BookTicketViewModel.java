@@ -3,13 +3,13 @@ package com.muthukumarasamy.busticketbooking.bookticket;
 import java.util.Arrays;
 import java.util.List;
 
-import com.muthukumarasamy.busticketbooking.dto.Arrangement;
+import com.muthukumarasamy.busticketbooking.dto.BUS;
 import com.muthukumarasamy.busticketbooking.dto.Booking;
 import com.muthukumarasamy.busticketbooking.repository.Repository;
 
 public class BookTicketViewModel {
 
-	public boolean removeSeats(String booked, int num, Arrangement bus, List<List<String>> seats) {
+	public boolean removeSeats(String booked, int num, BUS bus, List<List<String>> seats) {
 		List<String> bookedSeat = Arrays.asList(booked.split(","));
 		boolean found = false;
 		for (List<String> row : seats) {
@@ -29,12 +29,12 @@ public class BookTicketViewModel {
 			return false;
 	}
 
-	public void addBooking(String name, String age, Arrangement bus, String booked) {
+	public void addBooking(String name, String age, BUS bus, String booked) {
 		Booking book = new Booking(name, age, bus.getBusName(), booked);
 		Repository.getInstance().addBooking(book);
 	}
 
-	public List<Arrangement> getBus() {
+	public List<BUS> getBus() {
 		return Repository.getInstance().getBus();
 
 	}

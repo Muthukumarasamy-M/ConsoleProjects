@@ -1,17 +1,12 @@
 package com.muthukumarasamy.personaldiary;
 
-import java.util.Scanner;
+import com.muthukumarasamy.personaldiary.baseview.HomeScreen;
 
 public class PersonalDiary {
 
 	public static void main(String[] args) {
-		PersonalDiary p = new PersonalDiary();
-		p.init();
-	}
-	private void init() {
-
-		int select;
-		Scanner mc = new Scanner(System.in);
+		HomeScreen home = new HomeScreen();
+		home.Start();
 
 	}
 }

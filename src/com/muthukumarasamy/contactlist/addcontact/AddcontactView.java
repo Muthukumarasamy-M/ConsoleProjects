@@ -7,6 +7,7 @@ import com.muthukumarasamy.contactlist.dto.Contact;
 public class AddcontactView {
 
 	private AddcontactViewModel addcontactviewmodel;
+	Scanner mc = new Scanner(System.in);
 
 	public AddcontactView() {
 		addcontactviewmodel = new AddcontactViewModel();
@@ -14,15 +15,47 @@ public class AddcontactView {
 
 	public void addContacts() {
 
-		Scanner mc = new Scanner(System.in);
-		System.out.println(" Please enter the Name");
+		System.out.println("==========================================\n");
+		System.out.println("Please Enter contact Details");
+		System.out.print("\nName : ");
 		String Name = mc.next();
-		System.out.println(" Please enter the  Email");
+		checkname(Name);
+		System.out.print("\nEmail : ");
 		String Email = mc.next();
-		System.out.println(" Please enter Phone number");
+		checkemail(Email);
+		System.out.print("\nPhone number : ");
 		String number = mc.next();
-		Contact details = new Contact(Name, Email, number);
-		addcontactviewmodel.setInfo(details);
+		checkphone(number);
+		System.out.println("\n==========================================");
+
+		Contact details = new Contact(Name, number,Email);
+		if(addcontactviewmodel.addContacts(details)==1)
+			System.out.println("Contact successfully added");
 	}
 
+	private void checkphone(String number) {
+		if (!addcontactviewmodel.isValidateNumber(number)) {
+			System.out.print("Enter the valid number : ");
+			String str = mc.nextLine();
+			checkphone(str);
+		}
+	}
+
+	private void checkname(String name) {
+		if (!addcontactviewmodel.isValidateName(name)) {
+			System.out.print("Enter the valid name: ");
+			String str = mc.nextLine();
+			checkname(str);
+		}
+
+	}
+
+	private void checkemail(String email) {
+		if (!addcontactviewmodel.isValidateEmail(email)) {
+			System.out.print("Enter the valid Email : ");
+			String str = mc.nextLine();
+			checkemail(str);
+		}
+
+	}
 }

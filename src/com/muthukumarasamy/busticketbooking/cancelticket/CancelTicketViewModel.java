@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.muthukumarasamy.busticketbooking.dto.Arrangement;
+import com.muthukumarasamy.busticketbooking.dto.BUS;
 import com.muthukumarasamy.busticketbooking.dto.Booking;
 import com.muthukumarasamy.busticketbooking.repository.Repository;
 
 class CancelTicketViewModel {
 
 	private static List<Booking> booking = Repository.getInstance().getBooking();
-	private static List<Arrangement> data = Repository.getInstance().getBus();
+	private static List<BUS> data = Repository.getInstance().getBus();
 	private static Booking books;
 
 	private static List<List<String>> seats = new ArrayList();
@@ -49,7 +49,7 @@ class CancelTicketViewModel {
 	}
 
 	public void getSeats() {
-		for (Arrangement bus : data) {
+		for (BUS bus : data) {
 			if (bus.getBusName().equals(books.getBus())) {
 				bus.setSeating(replaceTicket(bus.getSeating()));
 			}

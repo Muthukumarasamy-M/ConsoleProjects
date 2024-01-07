@@ -3,15 +3,14 @@ package com.muthukumarasamy.busticketbooking.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Arrangement {
+public class BUS {
 
 	private String busName;
 	private String price;
 	private String departureTime;
-
 	private List<List<String>> Seating = new ArrayList<>();
 
-	public Arrangement(String name, String price2, String dtime, List<List<String>> seats) {
+	public BUS(String name, String price2, String dtime, List<List<String>> seats) {
 		this.busName = name;
 		this.price = price2;
 		this.departureTime = dtime;

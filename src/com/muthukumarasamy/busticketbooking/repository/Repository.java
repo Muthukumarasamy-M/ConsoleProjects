@@ -10,17 +10,17 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.muthukumarasamy.busticketbooking.dto.Arrangement;
+import com.muthukumarasamy.busticketbooking.dto.BUS;
 import com.muthukumarasamy.busticketbooking.dto.Booking;
 
 public class Repository {
 
-	private static List<Arrangement> bus = new ArrayList<>();
+	private static List<BUS> bus = new ArrayList<>();
 	private static List<Booking> bookings = new ArrayList<>();
 	private static Repository repository = null;
 
 	private static final String BOOKING = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\busticketbooking\\BOOKING.json";
-	private static final String SEATS = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\busticketbooking\\ARRANGEMENT.json";
+	private static final String SEATS = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\busticketbooking\\BUS.json";
 
 	private Repository() {
 		loadbusFromJson();
@@ -57,12 +57,11 @@ public class Repository {
 
 					seats.add(seatGroup);
 				}
-				bus.add(new Arrangement(name, price, dtime, seats));
+				bus.add(new BUS(name, price, dtime, seats));
 
 			}
 		} catch (IOException e) {
 
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -70,7 +69,7 @@ public class Repository {
 	public void savebustoJson() {
 
 		JSONArray BusArray = new JSONArray();
-		for (Arrangement details : bus) {
+		for (BUS details : bus) {
 			JSONObject jsonobject = new JSONObject();
 			jsonobject.put("name", details.getBusName());
 			jsonobject.put("amount", details.getPrice());
@@ -134,14 +133,13 @@ public class Repository {
 		}
 	}
 
-	public List<Arrangement> getBus() {
+	public List<BUS> getBus() {
 		return bus;
 	}
 
 	public void addBooking(Booking book) {
 		bookings.add(book);
 		saveBookingToJson();
-
 	}
 
 	public List<Booking> getBooking() {
@@ -154,7 +152,7 @@ public class Repository {
 		saveBookingToJson();
 	}
 
-	public void replaceBus(List<Arrangement> data) {
+	public void replaceBus(List<BUS> data) {
 		bus = data;
 		savebustoJson();
 	}

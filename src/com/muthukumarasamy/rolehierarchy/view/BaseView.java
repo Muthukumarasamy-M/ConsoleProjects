@@ -35,6 +35,7 @@ public class BaseView {
 	public void Continue() {
 		System.out.println("------------------------------");
 		System.out.println("press enter to continue");
+		System.out.println("------------------------------");
 	}
 	public void checkRoot() {
 

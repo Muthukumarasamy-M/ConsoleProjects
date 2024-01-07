@@ -11,13 +11,14 @@ import com.muthukumarasamy.rolehierarchy.repository.Repository;
 
 public class DisplayViewModel {
 
-	static List<Data> data = Repository.getInstance().getDetails();
+	static List<Data> details = new ArrayList<>();
 	static List<Data> hdata = new ArrayList<>();
 
 	public void findhdata() {
 		String rolename = "CEO";
+		details = Repository.getInstance().getDetails();
 		ArrayDeque<Data> queue = new ArrayDeque<>();
-		for (Data det : data) {
+		for (Data det : details) {
 			if (det.getRole().equals(rolename)) {
 				queue.add(det);
 				hdata.add(det);
@@ -27,7 +28,7 @@ public class DisplayViewModel {
 		while (!queue.isEmpty()) {
 
 			Data Currentdata = queue.pop();
-			for (Data det : data) {
+			for (Data det : details) {
 
 				if (!det.getReportingto().equals("-") && det.getReportingto().equals(Currentdata.getRole())) {
 					queue.add(det);
@@ -70,9 +71,9 @@ public class DisplayViewModel {
 			index++;
 			while (index < hdata.size()) {
 				Data cur = hdata.get(index);
-				if (hdata.indexOf(det) == 0)
+				if (hdata.indexOf(det) == 0 && !cur.getName().equals("-"))
 					result.append(cur.getName()).append(" , ");
-				else if (det.getRole().equals(cur.getReportingto()))
+				else if (det.getRole().equals(cur.getReportingto()) && !cur.getName().equals("-"))
 					result.append(cur.getName()).append(" , ");
 				index++;
 			}
@@ -121,8 +122,11 @@ public class DisplayViewModel {
 			else if (det.getName().equals(user2) && userdata2 == null)
 				userdata2 = det;
 		}
+
 		if (userdata1.getReportingto().equals(userdata2.getReportingto()))
 			return userdata1.getReportingto();
+		if (userdata1.getReportingto().equals("CEO") || userdata2.getReportingto().equals("CEO"))
+			return "CEO";
 
 		List<String> report1 = findreporting(userdata1);
 		List<String> report2 = findreporting(userdata2);
@@ -144,7 +148,7 @@ public class DisplayViewModel {
 			while (!queue.isEmpty()) {
 
 				Data Currentdata = queue.pop();
-				for (Data det : data) {
+				for (Data det : details) {
 
 					if (!det.getReportingto().equals("-") && det.getReportingto().equals(Currentdata.getRole())) {
 						queue.add(det);

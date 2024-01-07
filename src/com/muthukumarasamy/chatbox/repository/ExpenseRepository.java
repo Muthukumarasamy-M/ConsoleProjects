@@ -15,7 +15,7 @@ import com.muthukumarasamy.chatbox.dto.Expense;
 public class ExpenseRepository {
 
 	private static ExpenseRepository expenserepository = null;
-	private static final String EXPENSE_FILE = "C:\\Users\\ramki\\eclipse-workspace\\Chat\\expense.json";
+	private static final String EXPENSE_FILE = "C:\\Users\\ramki\\git\\repository\\projects\\src\\com\\muthukumarasamy\\chatbox\\files\\expense.json";
 	private JSONArray jsonArray;
 
 	public static ExpenseRepository getInstance() {

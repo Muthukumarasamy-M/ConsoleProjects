@@ -11,9 +11,13 @@ public class DeleteView {
 	}
 
 	public void deleteContact() {
+		System.out.println("\n=========================================");
 		Scanner mc = new Scanner(System.in);
 		System.out.println("Enter the name to be deleted");
 		String dname = mc.next();
-		deleteviewmodel.deleteContact(dname);
+
+		System.out.println("\n=========================================");
+		if (deleteviewmodel.deleteContact(dname) == 1)
+			System.out.println("contact deleted successfully");
 	}
 }

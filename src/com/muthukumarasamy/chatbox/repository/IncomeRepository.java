@@ -15,7 +15,7 @@ import com.muthukumarasamy.chatbox.dto.Expense;
 public class IncomeRepository {
 
 	private static IncomeRepository incomerepository = null;
-	private static final String INCOME_FILE = "C:\\Users\\ramki\\eclipse-workspace\\Chat\\income.json";
+	private static final String INCOME_FILE = "C:\\Users\\ramki\\git\\repository\\projects\\src\\com\\muthukumarasamy\\chatbox\\files\\income.json";
 
 	public static IncomeRepository getInstance() {
 		if (incomerepository == null)

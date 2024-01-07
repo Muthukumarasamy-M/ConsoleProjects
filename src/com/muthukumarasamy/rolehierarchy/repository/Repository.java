@@ -16,7 +16,7 @@ import com.muthukumarasamy.rolehierarchy.dto.Data;
 public class Repository {
 
 	private static Repository repository = null;
-	private static final String ALLROLE = "C:\\Users\\ramki\\git\\repository\\projects\\src\\com\\muthukumarasamy\\rolehierarchy\\Role.json";
+	private static final String ALLROLE = "C:\\Users\\ramki\\git\\repository\\projects\\src\\com\\muthukumarasamy\\rolehierarchy\\file\\Role.json";
 	private static List<Data> details = new ArrayList<>();
 
 	public Repository() {
@@ -26,10 +26,10 @@ public class Repository {
 	public void addJson(Data data) {
 
 		if (data.getName() == null) {
-			data.setName("-"); 
+			data.setName("-");
 		}
 		if (data.getReportingto() == null) {
-			data.setReportingto("-"); 
+			data.setReportingto("-");
 		}
 
 		details.add(data);
@@ -57,11 +57,10 @@ public class Repository {
 					String role = jsonObject.getString("role");
 					String reportingto = jsonObject.getString("reportingto");
 
-					Data data = new Data(role,reportingto,name);
+					Data data = new Data(role, reportingto, name);
 					details.add(data);
 				}
-				
-				
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

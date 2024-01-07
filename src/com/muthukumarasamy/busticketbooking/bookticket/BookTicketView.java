@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.muthukumarasamy.busticketbooking.dto.Arrangement;
+import com.muthukumarasamy.busticketbooking.dto.BUS;
 import com.muthukumarasamy.busticketbooking.dto.Booking;
 import com.muthukumarasamy.busticketbooking.repository.Repository;
 
 public class BookTicketView {
 
 	private BookTicketViewModel bookticketviewmodel;
-	private static List<Arrangement> Bus;
-	private static Arrangement bus;
+	private static List<BUS> Bus;
+	private static BUS bus;
 	static List<List<String>> seats = new ArrayList<>();
 
 	public BookTicketView() {
@@ -64,7 +64,7 @@ public class BookTicketView {
 
 		System.out.printf("\t| %-3s | %-16s | %-6s | %-12s |%n", "ID", "Bus Name", "Price", "Departure Time");
 
-		for (Arrangement bus : Bus) {
+		for (BUS bus : Bus) {
 			System.out.println("\t+-----+------------------+--------+----------------+");
 
 			System.out.printf("\t| %-3s | %-16s | %-6s | %-14s |%n", Bus.indexOf(bus) + 1, bus.getBusName(),

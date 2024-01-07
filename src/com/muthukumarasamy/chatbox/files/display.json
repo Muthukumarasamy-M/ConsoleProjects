@@ -1,0 +1,40 @@
+{
+    "press":[
+        {"0":"ADD"},
+        {"1":"View"}
+    ],
+    "press_1":
+    [
+        {"0":"Add expense"},
+        {"1":"Add income"}
+    ],
+    "press_1_1":
+    [
+        {"0":"Groceries"},
+        {"1":"Entertainment"},
+        {"2":"Outside food"},
+        {"3":"Bills"},
+        {"4":"health"}
+
+    ],
+    "press_1_2":
+    [
+        {"0":"Salary"},
+        {"1":"Advance"},
+        {"2":"Bonus"}
+    ],
+    "press_2":
+    [
+        {"0":"view expense"},
+        {"1":"view income"}
+    ],
+    "press_2_1":
+    [
+        {"0":"Enter the month name "}
+    ],
+    "press_2_2":
+    [
+        {"0":"Enter the month name "}
+    ]
+
+}

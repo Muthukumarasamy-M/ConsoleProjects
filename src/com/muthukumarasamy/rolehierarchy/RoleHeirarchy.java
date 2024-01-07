@@ -20,7 +20,6 @@ public class RoleHeirarchy {
 		Scanner mc = new Scanner(System.in);
 		BaseView baseview = new BaseView();
 		AddView add = new AddView();
-		DisplayView display = new DisplayView();
 		DeleteView delete = new DeleteView();
 		baseview.checkRoot();
 
@@ -34,6 +33,7 @@ public class RoleHeirarchy {
 				add.AddSubRole();
 				break;
 			case 2:
+				DisplayView display = new DisplayView();
 				display.displayRole();
 				break;
 			case 3:
@@ -43,22 +43,27 @@ public class RoleHeirarchy {
 				add.AddUser();
 				break;
 			case 5:
-				display.displayUser();
+				DisplayView display1 = new DisplayView();
+				display1.displayUser();
 				break;
 			case 6:
-				display.displayUserandSub();
+				DisplayView display2 = new DisplayView();
+				display2.displayUserandSub();
 				break;
 			case 7:
 				delete.deleteUser();
 				break;
 			case 8:
-				display.countUsersBetween();
+				DisplayView display3 = new DisplayView();
+				display3.countUsersBetween();
 				break;
 			case 9:
-				display.countHieght();
+				DisplayView display4 = new DisplayView();
+				display4.countHieght();
 				break;
 			case 10:
-				display.commonBoss();
+				DisplayView display5 = new DisplayView();
+				display5.commonBoss();
 				break;
 			}
 			if (select != 11) {
