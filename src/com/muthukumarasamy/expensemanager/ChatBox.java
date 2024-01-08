@@ -1,6 +1,6 @@
-package com.muthukumarasamy.chatbox;
+package com.muthukumarasamy.expensemanager;
 
-import com.muthukumarasamy.chatbox.stack.StackView;
+import com.muthukumarasamy.expensemanager.stack.StackView;
 
 public class ChatBox {
 

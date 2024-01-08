@@ -15,7 +15,7 @@ public class AddTaskView {
 		Scanner mc = new Scanner(System.in);
 		System.out.println("Enter the title : ");
 		String title = mc.nextLine();
-		System.out.println("Enter the description : ");
+		System.out.println("Enter the description :  ");
 		String description = mc.nextLine();
 		System.out.println("Enter the importance[low,mid,high]");
 		String importance = mc.nextLine();

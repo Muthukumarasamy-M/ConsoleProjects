@@ -1,6 +1,6 @@
-package com.muthukumarasamy.chatbox.dto;
+package com.muthukumarasamy.expensemanager.dto;
 
-public class Expense {
+public class Model {
 
 	private String category;
 	private String month;
