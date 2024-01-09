@@ -3,6 +3,7 @@ package com.muthukumarasamy.personaldiary.viewnotes;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.muthukumarasamy.personaldiary.dto.Note;
@@ -21,15 +22,10 @@ public class ReadNotesView {
 		if (notes.isEmpty())
 			System.out.println("No Notes are there");
 		else {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm");
-			for (Note note : notes) {
-				System.out.println("Date : " + dateFormat.format(new Date(note.getDate())));
-				System.out.println("Notes : " + note.getNote());
-			}
+			printnotes(notes);
 		}
 
 	}
-
 	public void searchNotes() {
 
 		Scanner mc = new Scanner(System.in);
@@ -39,13 +35,16 @@ public class ReadNotesView {
 		if (notes.isEmpty())
 			System.out.println("No Notes are there");
 		else {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm");
-			for (Note note : notes) {
-				System.out.println("-----------------------------------------------------------\n");
-				System.out.println("Date : " + dateFormat.format(new Date(note.getDate())));
-				System.out.println("Notes : " + note.getNote());
-				System.out.println("-----------------------------------------------------------\n");
-			}
+			printnotes(notes);
+		}
+	}
+
+	public void printnotes(List<Note> notes) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm");
+		for (Note note : notes) {
+			System.out.println("-----------------------------------------------------------\n");
+			System.out.println("Date : " + dateFormat.format(new Date(note.getDate())));
+			System.out.println("Notes : " + note.getNote());
 		}
 	}
 }

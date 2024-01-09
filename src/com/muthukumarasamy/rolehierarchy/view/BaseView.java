@@ -2,6 +2,9 @@ package com.muthukumarasamy.rolehierarchy.view;
 
 import java.util.Scanner;
 
+import com.muthukumarasamy.rolehierarchy.add.AddView;
+import com.muthukumarasamy.rolehierarchy.delete.DeleteView;
+import com.muthukumarasamy.rolehierarchy.display.DisplayView;
 import com.muthukumarasamy.rolehierarchy.dto.Data;
 
 public class BaseView {
@@ -11,6 +14,64 @@ public class BaseView {
 
 	public BaseView() {
 		baseviewmodel = new BaseViewModel();
+	}
+
+	public void start() {
+		Scanner mc = new Scanner(System.in);
+		BaseView baseview = new BaseView();
+		AddView add = new AddView();
+		DeleteView delete = new DeleteView();
+		baseview.checkRoot();
+
+		int select = 0;
+		do {
+			methodView();
+			select = mc.nextInt();
+			mc.nextLine();
+			switch (select) {
+			case 1:
+				add.AddSubRole();
+				break;
+			case 2:
+				DisplayView display = new DisplayView();
+				display.displayRole();
+				break;
+			case 3:
+				delete.deleterole();
+				break;
+			case 4:
+				add.AddUser();
+				break;
+			case 5:
+				DisplayView display1 = new DisplayView();
+				display1.displayUser();
+				break;
+			case 6:
+				DisplayView display2 = new DisplayView();
+				display2.displayUserandSub();
+				break;
+			case 7:
+				delete.deleteUser();
+				break;
+			case 8:
+				DisplayView display3 = new DisplayView();
+				display3.countUsersBetween();
+				break;
+			case 9:
+				DisplayView display4 = new DisplayView();
+				display4.countHieght();
+				break;
+			case 10:
+				DisplayView display5 = new DisplayView();
+				display5.commonBoss();
+				break;
+			}
+			if (select != 11) {
+				Continue();
+				mc.nextLine();
+			}
+		} while (select != 11);
+		Exit();
 	}
 
 	public void methodView() {
@@ -37,6 +98,7 @@ public class BaseView {
 		System.out.println("press enter to continue");
 		System.out.println("------------------------------");
 	}
+
 	public void checkRoot() {
 
 		if (baseviewmodel.checkRoot() == -1) {

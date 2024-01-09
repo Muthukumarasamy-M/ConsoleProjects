@@ -16,8 +16,8 @@ import com.muthukumarasamy.movieticketbooking.dto.Booking;
 import com.muthukumarasamy.movieticketbooking.dto.Movie;
 
 public class Repository {
-	private static final String MOVIE = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\movieticketbooking\\MOVIE.json";
-	private static final String BOOKING = "C:\\Users\\ramki\\eclipse-workspace\\projects\\src\\com\\muthukumarasamy\\movieticketbooking\\BOOKING.json";
+	private static final String MOVIE = "C:\\Users\\ramki\\git\\ConsoleProjects\\src\\com\\muthukumarasamy\\movieticketbooking\\files\\MOVIE.json";
+	private static final String BOOKING = "C:\\Users\\ramki\\git\\ConsoleProjects\\src\\com\\muthukumarasamy\\movieticketbooking\\files\\BOOKING.json";
 	private static List<Movie> movies = new ArrayList<>();
 	private static List<Booking> bookings = new ArrayList<>();
 	private static Repository repository = null;

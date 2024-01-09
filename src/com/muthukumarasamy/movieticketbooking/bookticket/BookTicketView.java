@@ -18,16 +18,18 @@ public class BookTicketView {
 	}
 
 	public void bookTicket() {
+		System.out.println("--------------------------------\n");
 		Scanner mc = new Scanner(System.in);
 		System.out.print("Enter your UserName:  ");
 		String userName = mc.nextLine();
 
 		bookticketviemodel.displayMovies();
-		System.out.print("Choose a movie:  ");
-		String movieTitle = mc.nextLine();
+		System.out.print("Enter number of the movie :  ");
+		int movieindex  = mc.nextInt();
 
-		bookticketviemodel.getMovieByTitle(movieTitle);
-		System.out.println("Available seats for " + movieTitle + ": ");
+		String movieTitle =  bookticketviemodel.getMovieByTitle(movieindex);
+		System.out.println("--------------------------------");
+		System.out.println("\nAvailable seats for " + movieTitle + ": ");
 		bookticketviemodel.getSeats();
 
 		System.out.print("Enter number of seats to book  : ");

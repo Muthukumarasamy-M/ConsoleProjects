@@ -14,7 +14,7 @@ class ExpenseViewModel {
 
 	public int  updateExpense(Model expense) {
 
-		return Repository.getInstance().Addexpense(expense);
+		return Repository.getInstance().addExpense(expense);
 
 	}
 }

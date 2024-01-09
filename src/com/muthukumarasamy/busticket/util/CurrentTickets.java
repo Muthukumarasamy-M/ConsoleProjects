@@ -20,13 +20,16 @@ public class CurrentTickets {
 		List<Ticket> userticket = new ArrayList<>();
 		for (Ticket ticket : ticketlist) {
 
-			if(ticket.getDate().compareTo(todaydates)>=0)
+			if (ticket.getDate().compareTo(todaydates) < 0) {
 				ticket.setStatus("Completed");
-			if (ticket.getUserName().equals(username) && ticket.getDate().compareTo(todaydates) >= 0)
+			}
+			if (ticket.getUserName().equals(username) && ticket.getDate().compareTo(todaydates) >= 0
+					&& ticket.getStatus().equals("OnProcess"))
 				userticket.add(ticket);
 		}
 		return userticket;
 	}
+
 	public List<Ticket> getHistory(String username) {
 
 		List<Ticket> ticketlist = TicketRepo.getInstance().getTicketlist();

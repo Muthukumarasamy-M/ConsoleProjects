@@ -48,7 +48,7 @@ public class HomeScreen {
 	}
 
 	private void Continue() {
-		System.out.println("---------------------------------");
+		System.out.println("----------------------------------------------");
 		System.out.print("Enter to continue");
 	}
 

@@ -22,40 +22,36 @@ class BookTicketViewModel {
 		System.out.println("\t+---+-----------------------+");
 		int index = 0;
 		for (Movie movie : movies) {
-		    System.out.printf("\t| %-2s| %-21s |\n", ++index, movie.getTitle());
+			System.out.printf("\t| %-2s| %-21s |\n", ++index, movie.getTitle());
 		}
 		System.out.println("\t+---+=======================+");
 
-
 	}
 
-	public Movie getMovieByTitle(String title) {
-		for (Movie moviee : movies) {
-			if (moviee.getTitle().equals(title)) {
-				data = moviee.getSeats();
-				movie = moviee;
+	public String getMovieByTitle(int movieTitle) {
+		Movie moviee = movies.get(movieTitle - 1);
+		data = moviee.getSeats();
+		movie = moviee;
 
-			}
-		}
-		return null;
+		return movie.getTitle();
 	}
 
 	public void getSeats() {
-		
+
 		System.out.println("\t+-----------------------------+");
 		for (List<String> details : data) {
-		    System.out.print("\t| ");
-		    
-		    int halfSize = details.size() / 2;
-		    
-		    for (int i = 0; i < details.size(); i++) {
-		        System.out.printf("%-3s",details.get(i) + " ");
-		        if (i == halfSize - 1) {
-		            System.out.print("|  |");
-		        }
-		        
-		    }
-		    System.out.print("|\n");
+			System.out.print("\t| ");
+
+			int halfSize = details.size() / 2;
+
+			for (int i = 0; i < details.size(); i++) {
+				System.out.printf("%-3s", details.get(i) + " ");
+				if (i == halfSize - 1) {
+					System.out.print("|  |");
+				}
+
+			}
+			System.out.print("|\n");
 		}
 		System.out.println("\t+-----------------------------+");
 

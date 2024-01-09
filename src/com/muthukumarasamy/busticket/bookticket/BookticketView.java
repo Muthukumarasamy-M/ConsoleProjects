@@ -56,7 +56,7 @@ public class BookticketView extends Color {
 		String seats = displayseating(userbus.getSeating());
 		bookticketviewmodel.removeSeats(seats, userbus);
 		Ticket ticket = new Ticket(data.getUsername(), date[dateindex - 1], start[0], end[0], price,
-				userbus.getBusName(), seats,"Onprocess");
+				userbus.getBusName(), seats,"OnProcess");
 
 		bookticketviewmodel.addtoTicketlist(ticket);
 		System.out.println(CYAN + "Ticket has been added " + RESET);

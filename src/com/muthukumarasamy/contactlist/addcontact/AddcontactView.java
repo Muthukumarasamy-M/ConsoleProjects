@@ -18,13 +18,13 @@ public class AddcontactView {
 		System.out.println("==========================================\n");
 		System.out.println("Please Enter contact Details");
 		System.out.print("\nName : ");
-		String Name = mc.next();
+		String Name = mc.nextLine();
 		checkname(Name);
 		System.out.print("\nEmail : ");
-		String Email = mc.next();
+		String Email = mc.nextLine();
 		checkemail(Email);
 		System.out.print("\nPhone number : ");
-		String number = mc.next();
+		String number = mc.nextLine();
 		checkphone(number);
 		System.out.println("\n==========================================");
 

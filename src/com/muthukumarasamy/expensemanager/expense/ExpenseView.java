@@ -37,7 +37,7 @@ public class ExpenseView {
 		if (expense.size() > 0) {
 			System.out.println("Expense for " + expense.get(0).getMonth() + " : ");
 			for (Model model : expense) {
-				System.out.println(" " + model.getCategory() + " : " + model.getAmount());
+				System.out.println("->" + model.getCategory() + " : " + model.getAmount());
 			}
 		} else
 			System.out.println("There is no Expense for month ");

@@ -18,14 +18,21 @@ public class TicketView extends Color {
 	public void viewticket(User data) {
 		List<Ticket> ticketlist = ticketviewmodel.getTicket(data.getUsername());
 
-		view(ticketlist);
+		if(ticketlist.isEmpty())
+			System.out.println(RED+"Currently, no tickets are available."+RESET);
+		else
+			view(ticketlist);
 	}
 
 	public void viewHistory(User data) {
 
 		List<Ticket> ticketlist = ticketviewmodel.getHistory(data.getUsername());
 
-		view(ticketlist);
+		
+		if(ticketlist.isEmpty())
+			System.out.println(RED+"There is no history of tickets"+RESET);
+		else
+			view(ticketlist);
 	}
 
 	private void view(List<Ticket> ticketlist) {

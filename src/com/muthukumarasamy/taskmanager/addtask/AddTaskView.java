@@ -13,6 +13,7 @@ public class AddTaskView {
 
 	public void addTask() {
 		Scanner mc = new Scanner(System.in);
+		System.out.println("------------------------------------------\n");
 		System.out.println("Enter the title : ");
 		String title = mc.nextLine();
 		System.out.println("Enter the description :  ");

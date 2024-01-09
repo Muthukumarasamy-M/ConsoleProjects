@@ -16,43 +16,40 @@ public class CancelTicketView extends Color {
 	}
 
 	public void cancelTicket(User data) {
-		Scanner mc =new Scanner(System.in);
-		int index =0;
-		List<Ticket>ticketlist =cancelticketviewmodel.getTicket(data.getUsername());
-		
-		if(ticketlist.isEmpty())
-		{
-			System.out.println("No tickets found current user " );
-		}
-		else {
-		for (Ticket userticket : ticketlist) {
-			
-			System.out.println("-----------------------------------------");
-			System.out.println("TICKET -> "+(++index));
-			System.out.println("_________________________________________");
-			System.out.println(
-					(CYAN + "| UserName         : " + RESET) + (BRIGHT_WHITE + userticket.getUserName() + RESET));
-			System.out.println(
-					(CYAN + "| BusName          : " + RESET) + (BRIGHT_WHITE + userticket.getBusName() + RESET));
-			System.out
-					.println((CYAN + "| Date             : " + RESET) + (BRIGHT_WHITE + userticket.getDate() + RESET));
-			System.out.println(
-					(CYAN + "| Arrival          : " + RESET) + (BRIGHT_WHITE + userticket.getArrival() + RESET));
-			System.out.println(
-					(CYAN + "| Departure        : " + RESET) + (BRIGHT_WHITE + userticket.getDeparture() + RESET));
-			System.out
-					.println((CYAN + "| Price            : " + RESET) + (BRIGHT_WHITE + userticket.getPrice() + RESET));
-			System.out
-					.println((CYAN + "| Booked seats     : " + RESET) + (BRIGHT_WHITE + userticket.getSeats() + RESET));
-		}
+		Scanner mc = new Scanner(System.in);
+		int index = 0;
+		List<Ticket> ticketlist = cancelticketviewmodel.getTicket(data.getUsername());
 
-		System.out.println("_________________________________________");
-		System.out.print("Enter the Ticket to cancel -> ");
-		int select = mc.nextInt();
-		System.out.println();
-		cancelticketviewmodel.cancelticket(ticketlist.get(select-1));
+		if (ticketlist.isEmpty())
+			System.out.println(RED + "Currently, no tickets are available." + RESET);
+		else {
+			for (Ticket userticket : ticketlist) {
+
+				System.out.println("-----------------------------------------");
+				System.out.println("TICKET -> " + (++index));
+				System.out.println("_________________________________________");
+				System.out.println(
+						(CYAN + "| UserName         : " + RESET) + (BRIGHT_WHITE + userticket.getUserName() + RESET));
+				System.out.println(
+						(CYAN + "| BusName          : " + RESET) + (BRIGHT_WHITE + userticket.getBusName() + RESET));
+				System.out.println(
+						(CYAN + "| Date             : " + RESET) + (BRIGHT_WHITE + userticket.getDate() + RESET));
+				System.out.println(
+						(CYAN + "| Arrival          : " + RESET) + (BRIGHT_WHITE + userticket.getArrival() + RESET));
+				System.out.println(
+						(CYAN + "| Departure        : " + RESET) + (BRIGHT_WHITE + userticket.getDeparture() + RESET));
+				System.out.println(
+						(CYAN + "| Price            : " + RESET) + (BRIGHT_WHITE + userticket.getPrice() + RESET));
+				System.out.println(
+						(CYAN + "| Booked seats     : " + RESET) + (BRIGHT_WHITE + userticket.getSeats() + RESET));
+			}
+
+			System.out.println("_________________________________________");
+			System.out.print("Enter the Ticket number cancel -> ");
+			int select = mc.nextInt();
+			System.out.println();
+			cancelticketviewmodel.cancelticket(ticketlist.get(select - 1));
 		}
-		
 
 	}
 }
