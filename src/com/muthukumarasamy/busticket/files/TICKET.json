@@ -1,0 +1,32 @@
+[
+  {
+    "BusName": "Parvana Travels",
+    "UserName": "muthukumar",
+    "Departure": "Guduvancherry",
+    "Price": "350",
+    "Arrival": "Tenkasi",
+    "Date": "03-01-2024",
+    "Seats": "c3,c4,",
+    "Status":"Completed"
+  },
+  {
+    "BusName": "Parvana Travels",
+    "UserName": "muthukumar",
+    "Departure": "Guduvancherry",
+    "Price": "350",
+    "Arrival": "Tenkasi",
+    "Date": "04-01-2024",
+    "Seats": "a1",
+    "Status":"Completed"
+  },
+  {
+    "BusName": "Sam Travels",
+    "UserName": "muthukumar",
+    "Departure": "Trichy",
+    "Price": "100",
+    "Arrival": "Tenkasi",
+    "Date": "05-01-2024",
+    "Seats": "a3,a4,",
+    "Status":"OnProcess"
+  }
+]

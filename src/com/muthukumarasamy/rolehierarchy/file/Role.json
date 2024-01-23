@@ -1,0 +1,32 @@
+[
+  {
+    "reportingto": "-",
+    "role": "CEO",
+    "name": "muthu"
+  },
+  {
+    "reportingto": "CEO",
+    "role": "COO",
+    "name": "sam"
+  },
+  {
+    "reportingto": "CEO",
+    "role": "CTO",
+    "name": "thangam"
+  },
+  {
+    "reportingto": "COO",
+    "role": "sr Marketing Manager",
+    "name": "madhan"
+  },
+  {
+    "reportingto": "COO",
+    "role": "sr Engineering Manager",
+    "name": "surya"
+  },
+  {
+    "reportingto": "CTO",
+    "role": "Director of Technology",
+    "name": "kumar"
+  }
+]
